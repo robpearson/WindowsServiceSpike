@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.ServiceProcess;
 using Serilog;
 
@@ -13,8 +14,7 @@ namespace RobPearson.WindowsServiceSpike
         {
             // Init Serilog
             Log.Logger = new LoggerConfiguration()
-                .WriteTo.ColoredConsole()
-                .WriteTo.RollingFile(AppDomain.CurrentDomain.BaseDirectory + @"\Log-{Date}.txt")
+                .WriteTo.RollingFile(Path.Combine(@"C:\Temp\Log-{Date}.txt"))
                 .CreateLogger();
 
             ServiceBase[] ServicesToRun;
